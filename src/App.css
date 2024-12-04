@@ -211,6 +211,11 @@ body {
   .div-followers-profile {
     width: 100px;
   }
+  .border-column-center {
+    border: none;
+    border-left: 3px solid var(--lines-tweet-color);
+  }
+  
 }
 
 @media (max-width: 450px) {
@@ -223,10 +228,16 @@ body {
   .avatar-styles-profile {
     width: 60px;
   }
+  .col-left-padding {
+    padding: 0px 10px;
+  }
 }
 
 @media (max-width: 380px) {
   .profile-poster {
     height: 180px;
+  }
+   .col-left-padding {
+    padding: 0px 5px;
   }
 }

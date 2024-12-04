@@ -90,8 +90,8 @@ function Home() {
       <>
         <div className="container">
           <div className="row mt-4">
-            <div className="col-2">
-              <div className="text-white d-flex flex-column align-items-center align-items-md-start px-4 nav-bar-left-col ">
+            <div className="col-2 col-left-padding">
+              <div className="text-white d-flex flex-column align-items-center align-items-md-start nav-bar-left-col">
                 <i className="bi bi-twitter-x mb-2 mb-md-3"></i>
                 <div className="d-flex justify-content-center justify-content-md-start">
                   <NavLink
@@ -157,8 +157,8 @@ function Home() {
               </div>
             </div>
             <div className="col-10 col-md-7 border-column-center rounded">
-              <div className="py-4">
-                <div className="px-4">
+              <div className="py-sm-4">
+                <div className="px-2 px-sm-4">
                   <h4 className="text-white">Home</h4>
                   <img
                     className="img-fluid avatar-styles-tweet mb-3 rounded-circle"

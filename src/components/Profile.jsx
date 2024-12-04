@@ -160,7 +160,6 @@ function Profile() {
                   </div>
                 </div>
               </div>
-
               <div className="col-10 col-md-7 rounded">
                 <div className="position-relative">
                   <img
@@ -251,7 +250,6 @@ function Profile() {
                     ))}
                 </div>
               </div>
-
               <div className="col-2 col-md-3 d-none d-md-block">
                 <div className="px-2 col-right-styles">
                   <div className="right-container-home rounded text-secondary p-3">
