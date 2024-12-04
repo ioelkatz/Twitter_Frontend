@@ -10,6 +10,7 @@ import { logout } from "../../redux/tokenSlice";
 
 function Home() {
   const [modal, setModal] = useState(false);
+  const [modalLogout, setModalLogout] = useState(false);
   const [newTweet, setNewTweet] = useState("");
 
   const token = useSelector((state) => state.token);
@@ -18,6 +19,12 @@ function Home() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, [token]);
 
   const showModal = () => {
     setModal(true);
@@ -64,8 +71,17 @@ function Home() {
   };
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logout(""));
+    setModalLogout(false);
     navigate("/login");
+  };
+
+  const showModalLogout = () => {
+    setModalLogout(true);
+  };
+
+  const hideModalLogout = () => {
+    setModalLogout(false);
   };
 
   return (
@@ -73,22 +89,20 @@ function Home() {
     user && (
       <>
         <div className="container">
-          <div className="row">
-            <div className="col-2 col-md-3">
-              <div className="text-white d-flex flex-column px-4 sticky-top nav-bar-left-col ">
-                <i className="bi bi-twitter-x mb-3 mt-4"></i>
+          <div className="row mt-4">
+            <div className="col-2">
+              <div className="text-white d-flex flex-column align-items-center align-items-md-start px-4 nav-bar-left-col ">
+                <i className="bi bi-twitter-x mb-2 mb-md-3"></i>
                 <div className="d-flex justify-content-center justify-content-md-start">
                   <NavLink
                     className={({ isActive }) =>
                       isActive
-                        ? "text-decoration-none text-white fw-bold"
-                        : "text-decoration-none text-white"
+                        ? "text-decoration-none text-white fw-bold mb-2"
+                        : "text-decoration-none text-white mb-2"
                     }
                     to="/"
                   >
-                    <div className="">
-                      <i className="bi bi-house-door mb-3 d-md-none text-center "></i>
-                    </div>
+                    <i className="bi bi-house-door d-md-none text-center"></i>
                     <div className=" d-none d-md-flex">
                       <i className="bi bi-house-door me-2"></i>
                       <p className=""> Home</p>
@@ -99,8 +113,8 @@ function Home() {
                   <NavLink
                     className={({ isActive }) =>
                       isActive
-                        ? "text-decoration-none text-white fw-bold"
-                        : "text-decoration-none text-white"
+                        ? "text-decoration-none text-white fw-bold mb-2"
+                        : "text-decoration-none text-white mb-2"
                     }
                     to={`/profile/${user.username}`}
                   >
@@ -115,34 +129,34 @@ function Home() {
                 <div className="d-flex mb-1 justify-content-center justify-content-md-start">
                   <button
                     onClick={showModal}
-                    className="text-center btn btn-primary fw-bold rounded-circle d-md-none"
+                    className="button-tweet-icon d-md-none"
                   >
                     <i className="bi bi-pen-fill"></i>
                   </button>
                   <button
                     onClick={showModal}
-                    className="btn btn-primary fw-bold rounded-pill w-100 d-md-block d-none"
+                    className="button-tweet-styles rounded-pill d-md-block d-none"
                   >
                     Tweet
                   </button>
                 </div>
                 <div className="d-flex mb-1 justify-content-center justify-content-md-start mt-auto">
                   <button
-                    onClick={showModal}
-                    className="text-center btn btn-danger fw-bold rounded-circle d-md-none"
+                    onClick={showModalLogout}
+                    className="button-logout-icon d-md-none"
                   >
-                    <i class="bi bi-arrow-left-square-fill"></i>
+                    <i className="bi bi-arrow-left-square-fill"></i>
                   </button>
                   <button
-                    onClick={handleLogout}
-                    className="btn btn-danger fw-bold rounded-pill d-md-block d-none w-100"
+                    onClick={showModalLogout}
+                    className="button-logout-styles rounded-pill d-md-block d-none"
                   >
                     Logout
                   </button>
                 </div>
               </div>
             </div>
-            <div className="col-8 col-md-6 mt-4 border-column-center rounded">
+            <div className="col-10 col-md-7 border-column-center rounded">
               <div className="py-4">
                 <div className="px-4">
                   <h4 className="text-white">Home</h4>
@@ -165,7 +179,10 @@ function Home() {
                         style={{ height: "100px" }}
                       />
                       <div className="d-flex text-center">
-                        <button className="btn btn-primary fw-bold px-4 rounded-pill ms-auto mb-3">
+                        <button
+                          onClick={showModal}
+                          className="button-tweet-styles rounded-pill ms-auto mb-3"
+                        >
                           Tweet
                         </button>
                       </div>
@@ -173,9 +190,6 @@ function Home() {
                   </form>
                 </div>
                 {tweets.map((tweet, index, array) => (
-                  /* if (index + 1 === array.length) {
-                } */
-
                   <div key={index} className="border-tweet p-2 d-flex">
                     <div className=" p-2 me-3">
                       <Link to={`/profile/${tweet.user.username}`}>
@@ -219,32 +233,33 @@ function Home() {
                 ))}
               </div>
             </div>
-            <div className="col-2 col-md-3">
-              <div className="px-2 sticky-top">
-                <div className="right-container-home rounded text-secondary p-3 mt-4">
+            <div className="col-2 col-md-3 d-none d-md-block">
+              <div className="px-2 col-right-styles">
+                <div className="right-container-home rounded text-secondary p-3">
                   <p className="fs-5 text-white paragraph-top-col-right d-none d-md-block">
                     What´s happening
                   </p>
                   <div className="">
-                    <p className="m-0">hola</p>
-                    <p className="fw-bold m-0 text-white">#hola</p>
-                    <p className="">55.5K Tweets</p>
+                    <p className="m-0">Tesla</p>
+                    <p className="fw-bold m-0 text-white">#new</p>
+                    <p className="">6.9K Tweets</p>
                   </div>
                   <div className="">
-                    <p className="m-0">hola</p>
-                    <p className="fw-bold m-0 text-white">#hola</p>
-                    <p className="">55.5K Tweets</p>
+                    <p className="m-0">Moon</p>
+                    <p className="fw-bold m-0 text-white">#space</p>
+                    <p className="">99.3M Tweets</p>
                   </div>
                   <div className="d-none d-md-block">
-                    <p className="m-0">hola</p>
+                    <p className="m-0">Hello</p>
                     <p className="fw-bold m-0 text-white">#hola</p>
-                    <p className="">55.5K Tweets</p>
+                    <p className="">15.5K Tweets</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        {/* Create tweet Modal */}
         <Modal show={modal} onHide={hideModal}>
           <Modal.Body className="p-4">
             <div className="d-flex fw-bold">
@@ -269,12 +284,34 @@ function Home() {
                 <button
                   onClick={hideModal}
                   type="submit"
-                  className="fw-bold btn btn-primary ms-auto rounded-pill"
+                  className="button-tweet-styles ms-auto rounded-pill"
                 >
                   Tweet
                 </button>
               </div>
             </form>
+          </Modal.Body>
+        </Modal>
+        {/*  modal Logout */}
+        <Modal show={modalLogout} onHide={hideModalLogout}>
+          <Modal.Body className="p-4">
+            <div className="d-flex fw-bold">
+              <i
+                onClick={hideModalLogout}
+                className="bi bi-x-circle ms-auto text-danger cursor-pointer fs-5 icon-modal-x"
+              ></i>
+            </div>
+            <p className="fw-bold m-0 mb-4">Are you sure you want to logout?</p>
+            <label hidden></label>
+            <div className="d-flex">
+              <button
+                onClick={handleLogout}
+                type="button"
+                className="button-tweet-styles rounded-pill"
+              >
+                Yes, I am sure
+              </button>
+            </div>
           </Modal.Body>
         </Modal>
       </>

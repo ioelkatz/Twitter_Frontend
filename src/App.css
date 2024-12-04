@@ -23,14 +23,13 @@ body {
 
 .avatar-styles-profile {
   width: 90px;
-  /* height: 100px; */
   object-fit: cover;
   position: absolute;
-  top: 230px;
-  left: 30px;
+  bottom: -30px;
+  left: 10px;
   display: flex;
   justify-content: center;
-  border: 3px solid white;
+  border: 2px solid white;
   z-index: 100;
 }
 
@@ -53,8 +52,76 @@ body {
   border-color: var(--lines-tweet-color);
 }
 
+.background-blue {
+  background-color: blue;
+}
+
+.color-blue {
+  color: blue;
+}
+
+.button-tweet-icon {
+  font-weight: 500;
+  background-color: blue;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  padding: 10px 15px;
+  transition: all 0.4s ease-in-out;
+}
+
+.button-tweet-icon:hover {
+  background-color: rgb(61, 61, 163);
+}
+
+.button-logout-icon {
+  font-weight: 500;
+  background-color: rgb(221, 46, 46);
+  border: none;
+  color: white;
+  border-radius: 50%;
+  padding: 10px 15px;
+  transition: all 0.4s ease-in-out;
+}
+
+.button-logout-icon:hover {
+  background-color: red;
+}
+
+.button-tweet-styles {
+  font-weight: 500;
+  background-color: blue;
+  border: none;
+  padding: 5px 30px;
+  color: white;
+  transition: all 0.4s ease-in-out;
+}
+
+.button-tweet-styles:hover {
+  background-color: rgb(59, 59, 146);
+}
+
+.button-logout-styles {
+  width: 100% !important;
+  font-weight: 500;
+  background-color: rgb(221, 46, 46);
+  border: none;
+  padding: 5px 30px;
+  color: white;
+  transition: all 0.4s ease-in-out;
+}
+
+.button-logout-styles:hover {
+  background-color: red;
+}
+
 .nav-bar-left-col {
-  height: 550px;
+  height: 90vh;
+  position: fixed;
+}
+
+.col-right-styles {
+  position: fixed;
 }
 
 .cursor-pointer {
@@ -83,6 +150,12 @@ body {
   top: 10px;
 }
 
+.profile-poster {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
 .pencil-icon-profile {
   position: absolute;
   right: 19px;
@@ -108,6 +181,12 @@ body {
   .paragraph-top-col-right {
     font-size: 20px;
   }
+  .avatar-styles-profile {
+    width: 70px;
+  }
+  .profile-poster {
+    height: 250px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -125,8 +204,29 @@ body {
   }
 }
 
-.profile-poster {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
+@media (max-width: 576px) {
+  .col-left-signup {
+    padding: 10px !important;
+  }
+  .div-followers-profile {
+    width: 100px;
+  }
+}
+
+@media (max-width: 450px) {
+  .col-left-signup {
+    padding: 5px !important;
+  }
+  .profile-poster {
+    height: 200px;
+  }
+  .avatar-styles-profile {
+    width: 60px;
+  }
+}
+
+@media (max-width: 380px) {
+  .profile-poster {
+    height: 180px;
+  }
 }

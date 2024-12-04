@@ -33,7 +33,7 @@ function Login() {
     setUsername(e.target.value);
   };
   return (
-    <div className="bg-primary vh-100 d-flex align-items-center">
+    <div className="background-blue vh-100 d-flex align-items-center">
       <div className="container shadow h-75 contenedor-principal">
         <div className="row shadow h-100">
           <div className="col-2 col-sm-3 col-md-6 col-lg-7 bg-black rounded-start">
@@ -76,12 +76,10 @@ function Login() {
                   name="password"
                   autoComplete="current-password"
                 />
-                <button className="btn btn-primary fw-bold w-100 mb-3 rounded-5">
-                  Login
-                </button>
+                <button className="button-tweet-styles rounded-pill mb-3 w-100">Login</button>
                 <p className="text-center">
                   Don't have an account?
-                  <Link className="text-decoration-none ms-1" to="/sign-up">
+                  <Link className="text-decoration-none ms-1 color-blue" to="/sign-up">
                     Sign up
                   </Link>
                 </p>

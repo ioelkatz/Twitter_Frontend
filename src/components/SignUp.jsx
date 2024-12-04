@@ -48,11 +48,11 @@ function SignUp() {
   };
   return (
     <>
-      <div className="d-flex vh-100 align-items-center">
-        <div className="container shadow h-75 signup-container">
+      <div className="d-flex background-blue vh-100 align-items-center">
+        <div className="container shadow signup-container">
           <div className="row shadow h-100">
             <div className="col-2 col-sm-3 col-md-6 col-lg-7 bg-black rounded-start">
-              <div className=" d-flex flex-column h-100 col-left-signup">
+              <div className="d-flex flex-column h-100 col-left-signup">
                 <i className="bi bi-twitter-x fs-2 text-white"></i>
                 <p className="fw-bold text-white fs-4 mt-auto paragraph-left-sign-up d-none d-md-block">
                   Hi! Welcome to X Clone.
@@ -139,12 +139,15 @@ function SignUp() {
                     name="archives"
                   />
 
-                  <button className="btn btn-primary fw-bold w-100 mb-3 rounded-5">
+                  <button className="button-tweet-styles w-100 mb-3 rounded-pill">
                     Sign Up
                   </button>
                   <p className="text-center">
                     Already have an account?
-                    <Link className="text-decoration-none ms-1" to="/login">
+                    <Link
+                      className="text-decoration-none ms-1 color-blue"
+                      to="/login"
+                    >
                       Sign In
                     </Link>
                   </p>
