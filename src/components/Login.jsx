@@ -55,7 +55,7 @@ function Login() {
                 <input
                   onChange={handleUsername}
                   value={username}
-                  placeholder="Username"
+                  placeholder="eg: ioelkatz@gmail.com"
                   className="form-control mb-3"
                   type="text"
                   id="username"
@@ -69,17 +69,22 @@ function Login() {
                 <input
                   value={password}
                   onChange={handlePassword}
-                  placeholder="Password"
+                  placeholder="eg: 123"
                   className="form-control mb-3"
                   type="password"
                   id="password"
                   name="password"
                   autoComplete="current-password"
                 />
-                <button className="button-tweet-styles rounded-pill mb-3 w-100">Login</button>
+                <button className="button-tweet-styles rounded-pill mb-3 w-100">
+                  Login
+                </button>
                 <p className="text-center">
                   Don't have an account?
-                  <Link className="text-decoration-none ms-1 color-blue" to="/sign-up">
+                  <Link
+                    className="text-decoration-none ms-1 color-blue"
+                    to="/sign-up"
+                  >
                     Sign up
                   </Link>
                 </p>
